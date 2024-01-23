@@ -1,6 +1,15 @@
 # Project-Nibbler
 Slicer for Project Nibbler pick and place machine
 
-flower_pot_path.csv -> contains coords (x,y) for placement points, essentially outlines the printing path 
+## Directories
+csv/... -> .csv files that contain coords (x,y) for placement points; essentially outlines the printing path 
+svg/... -> Adobe Illustrator files that can be used to design place placement locations
+gcode_files/... -> contains executable .gcode files for the Nibbler pick and place machine
+object_generators/... -> contains Python files that generate gcode from .csvs
+pre_code/... -> long gcode commands contained in .txt files 
 
-gcodeGenerator.py -> python file that generates gcode instructions for pnp machine based on flower_pot_path.csv values
+## Main Files
+main.py -> python file containing functions for different printer commands (e.g. place puck, dip in resin, pick up puck)
+file_parser.py -> python file that reads svg files and converts them to csvs  
+
+
