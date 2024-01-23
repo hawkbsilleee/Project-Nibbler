@@ -15,12 +15,15 @@ def resin_dip(i, layer):
     end_height = str((3*layer-3)+35)
     return ";Dip in resin " + str(i) + "\nG0 X150 Y0 Z35 F5000.0  ;Move to pos\nG0 X150 Y0 Z10 F5000.0  ;Move down\nG0 X150 Y0 Z"+end_height+"F5000.0   ;Move up\n"
 
-def one_pick_up(index_coords, i, layer):
+def one_pick_up_old(index_coords, i, layer):
     """Pick up a puck from index_coords (x,y). Num_rep represents the nth pickup."""
     start_height = str((3*layer-3)+10)
     x = str(index_coords[0])
     y = str(index_coords[1])
     return ";Pick up "+str(i)+"\nG0 X"+x+" Y"+y+" Z"+start_height+" F5000.0  ;Move Resin extruder to pick up place\n"+"M106                  ;Turn vacuum on\nG0 Z6 F5000.0         ;Move z axis down to pick up puck\nG0 Z30 F5000.0        ;Move z axis back up\n"
+
+def one_pick_up(i):
+    return ";Pick up "+str(i)+"\nG0 X125 Y170 Z25 F5000\nG0 Z10 F5000\nM106\nG0 Z25 F5000\n"
 
 def generate_pick_map(x,y):
     pick_map = []
@@ -29,6 +32,8 @@ def generate_pick_map(x,y):
         pick_map.append(pick_map_list)
     return pick_map
 
+def puck_refill(i):
+    return ";Puck Refill "+str(i)+"\nG0 E-150 F10000\nG0 E150 F10000\nG0 E-150 F10000\n"
 
 def generate_custom_pick_map():
     pick_map = [
