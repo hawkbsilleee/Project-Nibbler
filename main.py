@@ -13,7 +13,7 @@ def end():
 def resin_dip(i, layer):
     """Dip puck in resin holder. Num_rep represents the nth resin dip."""
     end_height = str((3*layer-3)+35)
-    return ";Dip in resin " + str(i) + "\nG0 X150 Y0 Z35 F5000.0  ;Move to pos\nG0 X150 Y0 Z10 F5000.0  ;Move down\nG0 X150 Y0 Z"+end_height+"F5000.0   ;Move up\n"
+    return ";Dip in resin " + str(i) + "\nG0 X50 Y173 Z35 F5000.0  ;Move to pos\nG0 Z10 F5000.0  ;Move down\nG0 Z"+end_height+"F5000.0   ;Move up\n"
 
 def one_pick_up_old(index_coords, i, layer):
     """Pick up a puck from index_coords (x,y). Num_rep represents the nth pickup."""
@@ -23,7 +23,7 @@ def one_pick_up_old(index_coords, i, layer):
     return ";Pick up "+str(i)+"\nG0 X"+x+" Y"+y+" Z"+start_height+" F5000.0  ;Move Resin extruder to pick up place\n"+"M106                  ;Turn vacuum on\nG0 Z6 F5000.0         ;Move z axis down to pick up puck\nG0 Z30 F5000.0        ;Move z axis back up\n"
 
 def one_pick_up(i):
-    return ";Pick up "+str(i)+"\nG0 X125 Y170 Z25 F5000\nG0 Z10 F5000\nM106\nG0 Z25 F5000\n"
+    return ";Pick up "+str(i)+"\nG0 X125 Y170 Z25 F5000\nG0 Z10 F5000\nM106\nG0 Z30 F5000\n"
 
 def generate_pick_map(x,y):
     pick_map = []
@@ -33,7 +33,7 @@ def generate_pick_map(x,y):
     return pick_map
 
 def puck_refill(i):
-    return ";Puck Refill "+str(i)+"\nG0 E-150 F10000\nG0 E150 F10000\nG0 E-150 F10000\n"
+    return ";Puck Refill "+str(i)+"\nG0 E-75 F10000\nG0 E10 F10000\nG0 E-75 F10000\nG0 E10 F10000\nG0 E-100 F10000\n"
 
 def generate_custom_pick_map():
     pick_map = [
@@ -80,6 +80,9 @@ def place_puck(place_coords, layer, i):
     start_end_height = str((3*layer-3)+10)
     place_height = str(3*layer-3)
     return ";Move to place location "+str(i)+"\nG0 X"+x+" Y"+y+" Z"+start_end_height+" F5000.0  ;Move Resin extruder to pos"+"\nG0 X"+x+" Y"+y+" Z"+place_height+" F5000.0   ;Lower Resin extruder at pos\nM107	              ;Turn vacuum off\nG0 X"+x+" Y"+y+" Z"+start_end_height+" F5000.0  ;Raise back up Resin extruder at pos\n"
+
+def recycle():
+    return "G0 X125 Y170 Z60 F5000\nG0 Z10 F5000\nM106\nG0 Z60 F5000\nG0 Y195\nM107\nG0 E-75 F10000\nG0 E10 F10000\nG0 E-75 F10000\nG0 E10 F10000\nG0 E-100 F10000\nG0 Y170"
 
 if __name__ == "__main__":
     # print(setup())

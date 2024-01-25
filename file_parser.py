@@ -14,8 +14,8 @@ def parse_and_store(xml_file):
             layer_num = re.findall(r'\d+', layer_identity)[0]
         for layer_class in layer:
             for circle in layer_class:
-                x = circle.get('cx')
-                y = circle.get('cy')
+                x = float(circle.get('cx'))/2.8346
+                y = float(circle.get('cy'))/2.8346
                 csv_dict['LAYER'].append(layer_num)
                 csv_dict['X'].append(x)
                 csv_dict['Y'].append(y)
