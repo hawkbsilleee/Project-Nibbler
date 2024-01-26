@@ -1,4 +1,4 @@
-from main import recycle, condense_pick_map, setup, one_pick_up, generate_pick_location, resin_dip, place_puck, generate_custom_pick_map, end, puck_refill 
+from main import modeBRR, recycle, condense_pick_map, setup, one_pick_up, generate_pick_location, resin_dip, place_puck, generate_custom_pick_map, end, puck_refill 
 import pandas as pd
 
 # f = open('gcode_files/test.gcode', 'a')
@@ -21,10 +21,10 @@ import pandas as pd
     
 # f.write(end())
 
-f = open('gcode_files/recycle.gcode', 'a')
+f = open('gcode_files/test.gcode', 'a')
 f.write(setup())
 for i in range(6300):
-    f.write(recycle())
+    f.write(modeBRR(i))
 f.write(end()) 
 
 

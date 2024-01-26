@@ -33,8 +33,12 @@ def generate_pick_map(x,y):
     return pick_map
 
 def puck_refill(i):
+    # original
     return ";Puck Refill "+str(i)+"\nG0 E-75 F10000\nG0 E10 F10000\nG0 E-75 F10000\nG0 E10 F10000\nG0 E-100 F10000\n"
 
+def modeBRR(i):
+    return ";Puck Refill "+str(i)+"\nG0 E-1\nG0 E1\nG0 E-1\nG0 E1\nG0 E-1\nG0 E-1\nG0 E1\nG0 E-1\nG0 E1\nG0 E-1\nG0 E1\nG0 E-1\nG0 E1\nG0 E-1\nG0 E1\nG0 E-1\nG0 E1\nG0 E-1\nG0 E1\nG0 E-1\nG0 E1\nG0 E-1\nG4 S1\n"
+    
 def generate_custom_pick_map():
     pick_map = [
             [[10, 10], [20, 10], [30, 10], [40, 10], [50, 10], [60, 10], [70, 10], [80, 10], [90, 10], [100, 10], [110, 10]],           
